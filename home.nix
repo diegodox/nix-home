@@ -32,4 +32,23 @@
   };
 
   programs.lazygit = { enable = true; };
+  programs.fzf = { enable = true; };
+  programs.gh = { enable = true; };
+  programs.exa = { enable = true; };
+  programs.bat = { enable = true; };
+  programs.jq = { enable = true; };
+
+  home.packages = [
+	pkgs.gcc
+    pkgs.rustup
+    pkgs.stylua
+    pkgs.actionlint
+    pkgs.shellcheck
+
+    pkgs.ripgrep
+    pkgs.fd
+    pkgs.tldr
+
+	pkgs.ranger
+  ];
 }
