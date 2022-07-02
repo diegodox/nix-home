@@ -16,6 +16,14 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    # add libsqlite3.so to LD_LIBRARY_PATH
+    LD_LIBRARY_PATH = "${pkgs.sqlite.out}/lib:$LD_LIBRARY_PATH";
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -78,8 +86,38 @@
   programs.bat = { enable = true; };
   programs.jq = { enable = true; };
 
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
+
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-nightly;
+    vimAlias = true;
+    vimdiffAlias = true;
+
+    withNodeJs = true;
+
+    withPython3 = true;
+    extraPython3Packages = (ps: with ps; [ pynvim ]);
+
+    withRuby = false;
+
+    extraConfig = "lua require('init_lua')";
+  };
+
+  xdg.configFile."nvim/lua/rc" = {
+    source = ./nvim-config/lua/rc;
+    recursive = true;
+  };
+  xdg.configFile."nvim/lua/init_lua.lua".source = ./nvim-config/init.lua;
+  xdg.configFile."nvim/ftplugin".source = ./nvim-config/ftplugin;
+  xdg.configFile."nvim/winresize.vim".source = ./nvim-config/winresize.vim;
+
   home.packages = [
-	pkgs.gcc
+    pkgs.gcc
     pkgs.rustup
     pkgs.stylua
     pkgs.actionlint
@@ -88,7 +126,11 @@
     pkgs.ripgrep
     pkgs.fd
     pkgs.tldr
+    pkgs.unzip
+    pkgs.pkg-config
+    pkgs.openssl
+    pkgs.sqlite
 
-	pkgs.ranger
+    pkgs.ranger
   ];
 }
