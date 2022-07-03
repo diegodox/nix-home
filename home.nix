@@ -19,9 +19,9 @@
   imports = [
     ./nvim-config/nvim.nix
     ./fish/fish.nix
-    ./git/git.nix
     ./exa/exa.nix
     ./ranger/ranger.nix
+    ./git
     ./bat
     ./bash
   ];
