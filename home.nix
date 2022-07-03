@@ -26,14 +26,6 @@
     ./bash
   ];
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-    # add libsqlite3.so to LD_LIBRARY_PATH
-    LD_LIBRARY_PATH = "${pkgs.sqlite.out}/lib:$LD_LIBRARY_PATH";
-    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
