@@ -42,7 +42,9 @@ in
     functions = {
       fish_prompt = {
         description = "prompt";
-        body = builtins.readFile ./functions/fish_prompt.fish;
+        # first prompt disapear...
+        # exec fish_prompt in prompt.
+        body = builtins.readFile ./functions/fish_prompt.fish + "\nfish_prompt";
       };
     };
   };
