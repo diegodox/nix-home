@@ -20,9 +20,9 @@
     ./nvim-config/nvim.nix
     ./fish/fish.nix
     ./git/git.nix
-    ./bat/bat.nix
     ./exa/exa.nix
     ./ranger/ranger.nix
+    ./bat
     ./bash
   ];
 
