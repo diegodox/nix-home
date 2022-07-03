@@ -21,31 +21,31 @@ let
   };
 in
 {
-  config = {
-    programs.fish = {
-      enable = true;
-      plugins = [
-        oh-my-fish
-        fzf-fish
-      ];
+  config.programs.fish = {
+    enable = true;
+    plugins = [
+      oh-my-fish
+      fzf-fish
+    ];
 
-      shellAbbrs = {
-        r = "ranger";
-        lg = "lazygit";
-      };
+    shellAbbrs = {
+      r = "ranger";
+      lg = "lazygit";
+    };
 
-      interactiveShellInit = ''
-        # if test -e <nix_file_path_file>
-        #   fenv source <nix_file_path_file>
-        # end
-      '';
+    # interactiveShellInit = ''
+    #   # if test -e <nix_file_path_file>
+    #   #   fenv source <nix_file_path_file>
+    #   # end
+    # '';
 
-      functions = {
-        fish_prompt = {
-          description = "prompt";
-          body = builtins.readFile ./functions/fish_prompt.fish;
-        };
+    functions = {
+      fish_prompt = {
+        description = "prompt";
+        body = builtins.readFile ./functions/fish_prompt.fish;
       };
     };
   };
+
+  config.programs.fzf = { enable = true; };
 }
