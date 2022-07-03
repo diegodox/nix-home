@@ -18,11 +18,11 @@
 
   imports = [
     ./nvim-config/nvim.nix
-    ./ranger/ranger.nix
     ./fish
     ./git
     ./bat
     ./exa
+    ./ranger
     ./bash
   ];
 
