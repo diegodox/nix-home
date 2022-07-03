@@ -30,11 +30,6 @@ in
       ];
 
       shellAbbrs = {
-        ls = "exa";
-        ll = "exa -l";
-        la = "exa -a";
-        lla = "exa -la";
-
         r = "ranger";
         lg = "lazygit";
       };

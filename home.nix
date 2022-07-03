@@ -21,6 +21,7 @@
     ./fish/fish.nix
     ./git/git.nix
     ./bat/bat.nix
+    ./exa/exa.nix
   ];
 
   home.sessionVariables = {
@@ -38,7 +39,6 @@
   programs.lazygit = { enable = true; };
   programs.fzf = { enable = true; };
   programs.gh = { enable = true; };
-  programs.exa = { enable = true; };
   programs.jq = { enable = true; };
 
   home.packages = [
