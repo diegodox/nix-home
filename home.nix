@@ -17,7 +17,7 @@
   home.stateVersion = "22.05";
 
   imports = [
-    ./nvim-config/nvim.nix
+    ./nvim-config
     ./fish
     ./git
     ./bat
