@@ -18,6 +18,7 @@
 
   imports = [
     ./nvim-config/nvim.nix
+    ./fish/fish.nix
   ];
 
   home.sessionVariables = {
@@ -40,46 +41,6 @@
     };
     extraConfig = {
       init = { defaultBranch = "main"; };
-    };
-  };
-
-  programs.fish = {
-    enable = true;
-    plugins = [
-      {
-        name = "foreign-env";
-        src = pkgs.fetchFromGitHub {
-          owner = "oh-my-fish";
-          repo = "plugin-foreign-env";
-          rev = "dddd9213272a0ab848d474d0cbde12ad034e65bc";
-          sha256 = "00xqlyl3lffc5l0viin1nyp819wf81fncqyz87jx8ljjdhilmgbs";
-        };
-      }
-      {
-        name = "fzf.fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "PatrickF1";
-          repo = "fzf.fish";
-          rev = "6d8e962f3ed84e42583cec1ec4861d4f0e6c4eb3";
-          hash = "sha256-0rnd8oJzLw8x/U7OLqoOMQpK81gRc7DTxZRSHxN9YlM=";
-        };
-      }
-    ];
-    shellAbbrs = {
-      ls = "exa";
-      ll = "exa -l";
-      la = "exa -a";
-      lla = "exa -la";
-
-      r = "ranger";
-      lg = "lazygit";
-      cat = "bat";
-    };
-    functions = {
-      fish_prompt = {
-        description = "prompt";
-        body = builtins.readFile ./fish/functions/fish_prompt.fish;
-      };
     };
   };
 
