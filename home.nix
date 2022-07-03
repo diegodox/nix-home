@@ -19,6 +19,7 @@
   imports = [
     ./nvim-config/nvim.nix
     ./fish/fish.nix
+    ./git/git.nix
   ];
 
   home.sessionVariables = {
@@ -32,17 +33,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.git = {
-    enable = true;
-    userName = "diegodox";
-    userEmail = "android.mxdiego9@gmail.com";
-    delta = {
-      enable = true;
-    };
-    extraConfig = {
-      init = { defaultBranch = "main"; };
-    };
-  };
 
   programs.lazygit = { enable = true; };
   programs.fzf = { enable = true; };
