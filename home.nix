@@ -23,6 +23,7 @@
     ./bat/bat.nix
     ./exa/exa.nix
     ./ranger/ranger.nix
+    ./bash
   ];
 
   home.sessionVariables = {
