@@ -22,6 +22,7 @@
     ./git/git.nix
     ./bat/bat.nix
     ./exa/exa.nix
+    ./ranger/ranger.nix
   ];
 
   home.sessionVariables = {
