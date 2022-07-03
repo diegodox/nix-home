@@ -37,7 +37,6 @@ in
 
         r = "ranger";
         lg = "lazygit";
-        cat = "bat";
       };
 
       interactiveShellInit = ''

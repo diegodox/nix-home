@@ -20,6 +20,7 @@
     ./nvim-config/nvim.nix
     ./fish/fish.nix
     ./git/git.nix
+    ./bat/bat.nix
   ];
 
   home.sessionVariables = {
@@ -38,7 +39,6 @@
   programs.fzf = { enable = true; };
   programs.gh = { enable = true; };
   programs.exa = { enable = true; };
-  programs.bat = { enable = true; };
   programs.jq = { enable = true; };
 
   home.packages = [
