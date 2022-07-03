@@ -16,6 +16,10 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
+  imports = [
+    ./nvim-config/nvim.nix
+  ];
+
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
@@ -85,36 +89,6 @@
   programs.exa = { enable = true; };
   programs.bat = { enable = true; };
   programs.jq = { enable = true; };
-
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
-
-  programs.neovim = {
-    enable = true;
-    package = pkgs.neovim-nightly;
-    vimAlias = true;
-    vimdiffAlias = true;
-
-    withNodeJs = true;
-
-    withPython3 = true;
-    extraPython3Packages = (ps: with ps; [ pynvim ]);
-
-    withRuby = false;
-
-    extraConfig = "lua require('init_lua')";
-  };
-
-  xdg.configFile."nvim/lua/rc" = {
-    source = ./nvim-config/lua/rc;
-    recursive = true;
-  };
-  xdg.configFile."nvim/lua/init_lua.lua".source = ./nvim-config/init.lua;
-  xdg.configFile."nvim/ftplugin".source = ./nvim-config/ftplugin;
-  xdg.configFile."nvim/winresize.vim".source = ./nvim-config/winresize.vim;
 
   home.packages = [
     pkgs.gcc
