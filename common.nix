@@ -1,5 +1,6 @@
-{ config, pkgs, ... }:
+# Common nix home-manager module between standalone/nixos-module and cli/gui
 
+{ config, pkgs, ... }:
 {
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -24,24 +25,19 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+
+  programs.lazygit = { enable = true; };
+  programs.fzf = { enable = true; };
   programs.gh = { enable = true; };
   programs.jq = { enable = true; };
 
   home.packages = [
-    pkgs.cachix
-
-    # ---
-    # lang
-    # ---
     pkgs.gcc
     pkgs.rustup
     pkgs.stylua
     pkgs.actionlint
     pkgs.shellcheck
 
-    # ---
-    # cli
-    # ---
     pkgs.ripgrep
     pkgs.fd
     pkgs.tldr
